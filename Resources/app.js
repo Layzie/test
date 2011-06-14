@@ -1,34 +1,40 @@
-// namespace
-var A2B = {};
+Titanium.UI.setBackgroundColor('#000');
 
-// include helper functions
-Ti.include('utils.js');
-Ti.Geolocation.purpose = "Receive User Location";
+var tabGroup = Titanium.UI.createTabGroup();
 
-// vars
-A2B.mapview = null;
-A2B.streetLabel = null
-A2B.cityCountryLabel = null;
-A2B.tableView = null;
-A2B.checkInArray = [];
-
-// create window
-A2B.win = Ti.UI.createWindow({
-	backgroundColor:'#fff'
+var win1 = Titanium.UI.createWindow({
+	title: 'Tab 1', 
+	backgroundColor: '#fff'
 });
+var tab1 = Titanium.UI.createTab({
+	icon: 'KS_nav_views.png', 
+	title: 'Tab 1', 
+	window: win1
+});
+var label1 = Titanium.UI.createLabel({
+	color: '#999',
+	text: 'I am Window 1', 
+	font: {fontSize: 20, fontFamily:'Helvetica Neue'}
+});
+win1.add(label1);
 
-// setup view and check into current location
-A2B.createView();
-A2B.checkIn();
+var win2 = Titanium.UI.createWindow({
+	title: 'Tab 2', 
+	backgroundColor: '#FFF'
+});
+var tab2 = Titanium.UI.createTab({
+	icon: 'KS_nav_ui.png',
+	title: 'Tab 2', 
+	window: win2
+});
+var label2 = Titanium.UI.createLabel({
+	color: '#999', 
+	text: 'I am Window 2', 
+	font: {fontSize: 20, fontFamily: 'Helvetica Neue'}
+});
+win2.add(label2);
 
-// retrieve all past checkins
-A2B.getCheckIns();
+tabGroup.addTab(tab1);
+tabGroup.addTab(tab2);
 
-// open window
-A2B.win.open();
-
-
-
-
-
-
+tabGroup.open();
